@@ -14,7 +14,11 @@ namespace Renta_Flix.Controllers
         {
 			var movie = new Movie() { Name = "The Predator" };
 
-            return View(movie);
+		    return View(movie);
+			//return Content("Hello World");
+			//return HttpNotFound();
+			//return new EmptyResult();
+			//return RedirectToAction("Index","Home", new { page = 1, sortBy = "name"});
         }
     }
 }
