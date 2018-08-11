@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Renta_Flix.Models;
+using Renta_Flix.ViewModels;
 
 namespace Renta_Flix.Controllers
 {
@@ -14,15 +15,20 @@ namespace Renta_Flix.Controllers
         {
 			var movie = new Movie() { Name = "The Predator" };
 
-		    return View(movie);
+			var customers = new List<Customer>
+			{
+				new Customer { Name = "Customer 1" },
+				new Customer { Name = "Customer 2" }
+			};
+
+			var viewModel = new RandomMovieViewModel
+			{
+				Movie = movie,
+				Customer = customers
+			};
+
+		    return View(viewModel);
         }
 
-		[Route("movies/released/{year}/{month:regex(\\d{2}):range(1, 12)}")]
-		public ActionResult ByReleaseDate(int year, int month)
-		{
-			return Content(year + "/" + month);
-		}
-
-		
     }
 }
