@@ -1,20 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Renta_Flix.Models;
 using Renta_Flix.ViewModels;
 
-namespace Renta_Flix.Controllers
+namespace Vidly.Controllers
 {
-    public class MoviesController : Controller
-    {
-        // GET: Movies/Random
-        public ActionResult Random()
-        {
-			var movie = new Movie() { Name = "The Predator" };
+	public class MoviesController : Controller
+	{
+		public ViewResult Index()
+		{
+			var movies = GetMovies();
 
+			return View(movies);
+		}
+
+		private IEnumerable<Movie> GetMovies()
+		{
+			return new List<Movie>
+			{
+				new Movie { Id = 1, Name = "The Predator" },
+				new Movie { Id = 2, Name = "Ready Player One" }
+			};
+		}
+
+		// GET: Movies/Random
+		public ActionResult Random()
+		{
+			var movie = new Movie() { Name = "Shrek!" };
 			var customers = new List<Customer>
 			{
 				new Customer { Name = "Customer 1" },
@@ -24,11 +36,10 @@ namespace Renta_Flix.Controllers
 			var viewModel = new RandomMovieViewModel
 			{
 				Movie = movie,
-				Customer = customers
+				Customers = customers
 			};
 
-		    return View(viewModel);
-        }
-
-    }
+			return View(viewModel);
+		}
+	}
 }
