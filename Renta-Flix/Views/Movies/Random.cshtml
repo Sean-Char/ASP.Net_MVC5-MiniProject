@@ -4,5 +4,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Movie.Name</h2>
+@*
+	This is a comment
+	on multiple lines
+*@
 
+
+@{
+	var className = Model.Customer.Count > 0 ? "popular" : null;
+}
+
+
+<h2 class="@className">@Model.Movie.Name</h2>
+
+@if (Model.Customer.Count == 0)
+{
+	<text>No one has rented this movie before.</text>
+}
+else
+{
+<ul>
+	@foreach (var customers in Model.Customer)
+	{
+		<li>@customers.Name</li>
+	}
+</ul>
+}
