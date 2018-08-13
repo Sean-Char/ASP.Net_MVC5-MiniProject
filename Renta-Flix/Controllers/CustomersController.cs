@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Renta_Flix.Models;
+using Renta_Flix.ViewModels;
 
 namespace Renta_Flix.Controllers
 {
@@ -24,7 +25,13 @@ namespace Renta_Flix.Controllers
 
 		public ActionResult New()
 		{
-			return View();
+			var membershipTypes = _context.MembershipType.ToList();
+			var viewModel = new NewCustomerViewModel
+			{
+				MembershipTypes = membershipTypes
+			};
+
+			return View(viewModel);
 		}
 
 		public ViewResult Index()
