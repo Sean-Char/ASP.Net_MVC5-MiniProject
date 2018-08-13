@@ -34,6 +34,12 @@ namespace Renta_Flix.Controllers
 			return View(viewModel);
 		}
 
+		[HttpPost]
+		public ActionResult Create(Customer customer)
+		{
+			return View();
+		}
+
 		public ViewResult Index()
         {
 			var customers = _context.Customers.Include(c => c.MembershipType).ToList();
