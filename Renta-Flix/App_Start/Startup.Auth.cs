@@ -54,9 +54,9 @@ namespace Renta_Flix
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "323270921580524",
+               appSecret: "7d6d70744e65fa0353575c62a5ef0f69");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
