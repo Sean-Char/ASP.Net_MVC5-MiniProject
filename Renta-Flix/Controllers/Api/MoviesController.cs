@@ -5,6 +5,7 @@ using System.Web.Http;
 using Renta_Flix.Dtos;
 using Renta_Flix.Models;
 using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace Renta_Flix.Controllers.Api
 {
@@ -20,7 +21,10 @@ namespace Renta_Flix.Controllers.Api
 		// GET /api/movies
 		public IEnumerable<MovieDto> GetMovies()
 		{
-			return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+			return _context.Movies
+				.Include(m => m.Genre)
+				.ToList()
+				.Select(Mapper.Map<Movie, MovieDto>);
 		}
 
 		// GET /api/movies/1
